@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Items</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.css')}}">
+</head>
+<body class="bg-warning">
+    <div class="navbar navbar-dark bg-dark p-2">
+        <h1 class="display-3 text-light">Welcome {{user.first_name}}!</h1>
+        <div class="d-flex gap-3 align-items-center">
+            <a class="badge badge-secondary" href="/users/dashboard/{{user.id}}">Return to Dashboard</a>
+            <a class="btn btn-danger" href="/logout">Logout</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center py-2">
+            <h2 class="display-5">{{item.name}}</h2>
+            <h3>Created by: {{item.first_name}}</h3>
+        </div>
+        <div class="container bg-dark rounded text-light px-4">
+            <div class="container d-flex justify-space-between py-4">
+                <h5 class="font-bold w-50">Description:</h5>
+                <p>{{item.description}}</p>
+            </div>
+            <div class="container d-flex justify-space-between py-4">
+                <h5 class="font-bold w-50">Under 30 mins:</h5>
+                <p>{{item.under}}</p>
+            </div>
+            <div class="container d-flex justify-space-between py-4">
+                <h5 class="font-bold w-50">Instructions:</h5>
+                <p>{{item.instructions}}</p>
+            </div>
+            <div class="container d-flex justify-space-between py-4">
+                <h5 class="font-bold w-50">Date:</h5>
+                <p>{{item.date}}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.css')}}">
+</head>
+<body class="bg-dark">
+    <div class="bg-warning py-3">
+        <div class="container gap-3 my-3">
+            <h1 class="display-2 font-weight-bolder text-light mx-2">Website</h1>
+            <div class="container d-flex gap-4 my-3">
+                <div class="container bg-light text-primary rounded">
+                    <h2 class="display-5">Register</h2>
+                    <form action="/login/process_registration" method="POST">
+                        <label class="form-label" for="first_name">First Name:</label>
+                        <input class="form-control" type="text" name="first_name" id="first_name">
+                        {% for msg in get_flashed_messages( category_filter = ['error_regist_fn'] ) %}
+                            <p class="text-warning">{{ msg }}</p>
+                        {% endfor %}
+                        <label class="form-label" for="last_name">Last Name:</label>
+                        <input class="form-control" type="text" name="last_name" id="last_name">
+                        {% for msg in get_flashed_messages( category_filter = ['error_regist_ln'] ) %}
+                            <p class="text-warning">{{ msg }}</p>
+                        {% endfor %}
+                        <label class="form-label" for="email">Email:</label>
+                        <input class="form-control" type="text" name="email" id="email">
+                        {% for msg in get_flashed_messages( category_filter = ['error_regist_email'] ) %}
+                            <p class="text-warning">{{ msg }}</p>
+                        {% endfor %}
+                        <label class="form-label" for="password">Password:</label>
+                        <input class="form-control" type="password" name="password" id="password">
+                        {% for msg in get_flashed_messages( category_filter = ['error_regist_pw'] ) %}
+                            <p class="text-warning">{{ msg }}</p>
+                        {% endfor %}
+                        <label class="form-label" for="confirm_pw">Confirm Password:</label>
+                        <input class="form-control" type="password" name="confirm_pw" id="confirm_pw">
+                        {% for msg in get_flashed_messages( category_filter = ['error_regist_pw_match'] ) %}
+                            <p class="text-warning">{{ msg }}</p>
+                        {% endfor %}
+                        <input class="btn btn-primary my-4" type="submit" value="Register">
+                    </form>
+                </div>
+                <div class="container bg-light text-success rounded h-100">
+                    <h2>Login</h2>
+                    <form action="/login/process_login" method="POST">
+                        <label class="form-label" for="email">Email:</label>
+                        <input class="form-control" type="text" name="email" id="email">
+                        {% for msg in get_flashed_messages( category_filter = ['error_login_email'] ) %}
+                            <p class="text-warning">{{ msg }}</p>
+                        {% endfor %}
+                        <label class="form-label" for="password">Password:</label>
+                        <input class="form-control" type="password" name="password" id="password">
+                        {% for msg in get_flashed_messages( category_filter = ['error_login_pw'] ) %}
+                            <p class="text-warning">{{ msg }}</p>
+                        {% endfor %}
+                        {% for msg in get_flashed_messages( category_filter = ['error_login_inv_creds'] ) %}
+                            <p class="text-warning">{{ msg }}</p>
+                        {% endfor %}
+                        <input class="btn btn-success my-4" type="submit" value="Login">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
